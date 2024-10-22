@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    
+    <div class="position-absolute top-0 start-50 translate-middle-x">
+      <form>
+        <input type="text" id="nevInput" placeholder="Név">
+        <input type="text" id="erdeklodesInput" placeholder="Érdeklődés">
+        <input type="number" id="korInput" placeholder="Kor">
+      </form>
+      <button id="ujadat" class="btn btn-outline-primary">Gomb</button>
+    </div>
+    <ul id="adatok"></ul>
+    
+    <p id="errorMessage"></p>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
