@@ -7,18 +7,34 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    
-    <div class="position-absolute top-0 start-50 translate-middle-x">
-      <form>
-        <input type="text" id="nevInput" placeholder="Név">
-        <input type="text" id="erdeklodesInput" placeholder="Érdeklődés">
-        <input type="number" id="korInput" placeholder="Kor">
-      </form>
-      <button id="ujadat" class="btn btn-outline-primary">Gomb</button>
+    <div class="container">
+
+      <div>
+        <form>
+          <input type="text" id="nevInput" placeholder="Név" class="form-control"><br>
+          <input type="text" id="erdeklodesInput" placeholder="Érdeklődés" class="form-control"><br>
+          <input type="number" id="korInput" placeholder="Kor" class="form-control">
+        </form>
+        <button id="ujadat" class="btn btn-outline-primary">Gomb</button>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Név</th>
+            <th>Érdeklődés</th>
+            <th>Kor</th>
+            <th>Műveletek</th>
+          </tr>
+        </thead>
+        <tbody id="adatok">
+          
+        </tbody>
+      </table>
+      
+      <p id="errorMessage"></p>
     </div>
-    <ul id="adatok"></ul>
+      <script type="module" src="/src/main.ts"></script>
+    </body>
+    </html>
     
-    <p id="errorMessage"></p>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
-</html>

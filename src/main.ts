@@ -12,13 +12,18 @@ async function adatLetoltes(){
   try{
     const response = await fetch('https://retoolapi.dev/XutzRp/data');
     const adatok = await response.json() as HozzaferesiAdat[];
-    const adatokElem = document.getElementById("adatok")!;
+    var temp = "";
 
-    adatok.forEach(adat => {
-      const li = document.createElement('li');
-      li.textContent = `${adat.id} ${adat.nev} ${adat.erdeklodes} ${adat.kor}`;
-      adatokElem.appendChild(li);
+    adatok.forEach(data => {
+      temp += "<tr>";
+            temp += "<td>"+ data.id +"</td>";
+            temp += "<td>"+ data.nev +"</td>";
+            temp += "<td>"+ data.erdeklodes +"</td>";
+            temp += "<td>"+ data.kor +"</td>";
+            temp += "<td>"+ "<button class=\"btn btn-outline-danger\">Törlés</button>" + "</td>"; // nincs kész
+            temp += "</tr>"
     })
+    document.getElementById("adatok")!.innerHTML = temp;
   }
   catch(e:any){
     document.getElementById("errorMessage")!.textContent = 
