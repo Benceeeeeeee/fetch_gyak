@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 interface HozzaferesiAdat{
   id: number;
   nev: string;
-  erdeklodes: string;
+  erdekledos: string;
   kor: number;
 }
 
@@ -17,14 +17,31 @@ async function adatLetoltes(){
       temp += "<tr>";
             temp += "<td>"+ data.id +"</td>";
             temp += "<td>"+ data.nev +"</td>";
-            temp += "<td>"+ data.erdeklodes +"</td>";
+            temp += "<td>"+ data.erdekledos +"</td>";
             temp += "<td>"+ data.kor +"</td>";
-            temp += "<td>"+ "<button class=\"btn btn-outline-danger\">Törlés</button>" + "</td>"; // nincs kész
+            temp += `<td><button class="btn btn-outline-danger" onclick = "torles(${data.id})">Törlés</button></td>`; // nem működik
             temp += "</tr>"
     })
     document.getElementById("adatok")!.innerHTML = temp;
   }
   catch(e:any){
+    document.getElementById("errorMessage")!.textContent = 
+    "hiba " + e.message;
+  }
+}
+async function torles(id: number) {
+  try {
+    const res = await fetch(`https://retoolapi.dev/XutzRp/data/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (res.ok) {
+      adatLetoltes();
+    } else {
+      document.getElementById("errorMessage")!.textContent = 
+      'Hiba a törlés közben';
+    }
+  } catch (e: any) {
     document.getElementById("errorMessage")!.textContent = 
     "hiba " + e.message;
   }
@@ -37,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("ujadat")?.addEventListener('click', async() => {
     const ujAdat = {
         nev: nevInput.value,
-        erdeklodes: erdeklodesInput.value,
+        erdekledos: erdeklodesInput.value,
         kor: korInput.value,
     }
     
